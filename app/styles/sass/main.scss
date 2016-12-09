@@ -1,3 +1,7 @@
+// import entire bootstrap framework for simplicity
+// normally we'd only import the bits we actually need
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+
 html,
 body {
   width: 100%;

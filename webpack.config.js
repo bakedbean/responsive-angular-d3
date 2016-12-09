@@ -8,7 +8,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = { 
   entry: {
-    app: './app.js',
+    app: './app/app.js',
     vendor: [
       'angular', 
       'angular-route'
@@ -46,7 +46,7 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin('[name].[hash].css'),
     new HtmlWebpackPlugin({
-      template: './index.html',
+      template: './app/index.html',
       inject: 'body'
     }),
     new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.[hash].js")

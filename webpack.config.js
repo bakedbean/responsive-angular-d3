@@ -43,6 +43,14 @@ module.exports = {
       loader: "file-loader" 
     }]
   },
+  plugins: [
+    new ExtractTextPlugin('[name].[hash].css'),
+    new HtmlWebpackPlugin({
+      template: './index.html',
+      inject: 'body'
+    }),
+    new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.[hash].js")
+  ],
   devServer: {
     contentBase: './app',
     stats: {

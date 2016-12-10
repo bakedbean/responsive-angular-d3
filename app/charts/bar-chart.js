@@ -13,7 +13,6 @@ export default class BarChart extends BaseChart {
 
   configure(data) {
     this.data = data
-      .filter(d => d.date && d.value)
       .map(d => ({
         date: d.date,
         value: +d.value
@@ -47,13 +46,14 @@ export default class BarChart extends BaseChart {
 
       y: () => this.g.append("g")
         .attr("class", "axis axis--y")
-        .call(this.d3.axisLeft(this.yAxis))
-        .append("text")
-          .attr("transform", "rotate(-90)")
-          .attr("y", 6)
-          .attr("dy", "0.75em")
-          .attr("text-anchor", "end")
-          .text("Values"),
+        .call(this.d3.axisLeft(this.yAxis)),
+
+      yLabel: () => this.g.append('text')
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "0.75em")
+        .attr("text-anchor", "end")
+        .text("Values"),
 
       bar: () => this.g.selectAll(".bar")
         .data(this.data)
@@ -70,6 +70,7 @@ export default class BarChart extends BaseChart {
     this.g = this.svg.append("g").attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
     this.renderers().x();
     this.renderers().y();
+    this.renderers().yLabel();
     this.renderers().bar();
   }
 }

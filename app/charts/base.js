@@ -7,6 +7,8 @@ export default class BaseChart {
     this.id = id;
     this.d3 = d3;
     this.element = element
+    this.svg = d3.select(this.element[0])
+      .append('svg');
   }
 
   margins(sizes) {
@@ -34,7 +36,6 @@ export default class BaseChart {
     this.width = this.element[0].offsetWidth - this.margin.left - this.margin.right;
     this.height = .7 * this.width;
 
-    this.svg = this.d3.select(this.element[0]).append('svg');
     this.svg
       .attr('id', this.id)
       .attr('width', this.width + this.margin.right + this.margin.left)

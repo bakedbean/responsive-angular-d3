@@ -51,9 +51,9 @@ export default class BarChart extends BaseChart {
         .append("text")
           .attr("transform", "rotate(-90)")
           .attr("y", 6)
-          .attr("dy", "0.71em")
+          .attr("dy", "0.75em")
           .attr("text-anchor", "end")
-          .text("Steps"),
+          .text("Values"),
 
       bar: () => this.g.selectAll(".bar")
         .data(this.data)

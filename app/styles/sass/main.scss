@@ -12,3 +12,14 @@ body {
 .fullheight {
   min-height: 100%;
 }
+
+.bar {
+  fill: blue;
+  stroke: black;
+}
+
+.axis path,
+.axis line {
+  stroke: #000;
+  shape-rendering: crispEdges;
+}

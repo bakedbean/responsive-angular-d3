@@ -9,7 +9,7 @@ export default class BaseChart {
     this.element = element
   }
 
-  size(...sizes) {
+  margins(sizes) {
     // destructure the sizes
     let [top, right, left, bottom] = sizes;
 
@@ -26,6 +26,10 @@ export default class BaseChart {
       left: this.width < BREAKPOINT ? leftSm || 25 : leftLg || 110,
       bottom: bottom || 110
     };
+  }
+
+  size(...sizes) {
+    this.margins(sizes);
 
     this.width = this.element[0].offsetWidth - this.margin.left - this.margin.right;
     this.height = .7 * this.width;

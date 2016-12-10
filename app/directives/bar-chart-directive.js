@@ -14,9 +14,7 @@ export default [
         let chart = new BarChart(d3, element, scope.data);
         chart.render();
 
-        angular.element($window).bind('resize', function(){
-          chart.clean().size().render();
-        });
+        angular.element($window).bind('resize', () => chart.clean().size().render());
       }, 100);
     }
 

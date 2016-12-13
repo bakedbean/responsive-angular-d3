@@ -9,26 +9,27 @@ export default class BaseChart {
     this.element = element
   }
 
+  /* 
+   * take a configuration object of sizes and setup margins:
+   * top: int,
+   * bottom: int,
+   * left: object { sm: int, lg: int }
+   * right: object { sm: int, lg: int }
+  */
   margins(sizes) {
-    // destructure the sizes
-    let [top, right, left, bottom] = sizes;
-
-    if (!left) left = [];
-    if (!right) right = [];
-
-    // destructure left and right responsive arrays
-    let [rightSm, rightLg] = right;
-    let [leftSm, leftLg] = left;
+    // set defaults if not present
+    if (!sizes.right) sizes.right = {};
+    if (!sizes.left) sizes.left = {};
 
     this.margin = {
-      top: top || 20,
-      right: this.width < BREAKPOINT ? rightSm || 0 : rightLg || 10,
-      left: this.width < BREAKPOINT ? leftSm || 25 : leftLg || 110,
-      bottom: bottom || 110
+      top: sizes.top || 20,
+      right: this.width < BREAKPOINT ? sizes.right.sm || 0 : sizes.right.lg || 10,
+      left: this.width < BREAKPOINT ? sizes.left.sm || 25 : sizes.left.lg || 110,
+      bottom: sizes.bottom || 110
     };
   }
 
-  size(...sizes) {
+  size(sizes) {
     this.margins(sizes);
 
     this.width = this.element[0].offsetWidth - this.margin.left - this.margin.right;

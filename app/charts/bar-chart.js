@@ -6,12 +6,7 @@ export default class BarChart extends BaseChart {
   constructor(d3, element, data, id) {
     super('bar-chart-' + id || 'bar-chart', d3, element);
 
-    this.size({
-      left: {
-        sm: 0,
-        lg: 50
-      }
-    }).configure(data);
+    this.configure(data);
   }
 
   configure(data) {

@@ -22,10 +22,10 @@ export default class BaseChart {
     if (!sizes.left) sizes.left = {};
 
     this.margin = {
-      top: sizes.top || 20,
-      right: this.width < BREAKPOINT ? sizes.right.sm || 0 : sizes.right.lg || 10,
-      left: this.width < BREAKPOINT ? sizes.left.sm || 25 : sizes.left.lg || 110,
-      bottom: sizes.bottom || 110
+      top: sizes.top || 0,
+      right: this.width < BREAKPOINT ? sizes.right.sm || 0 : sizes.right.lg || 0,
+      left: this.width < BREAKPOINT ? sizes.left.sm || 0 : sizes.left.lg || 0,
+      bottom: sizes.bottom || 0
     };
   }
 

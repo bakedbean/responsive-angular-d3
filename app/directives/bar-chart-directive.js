@@ -3,6 +3,12 @@
 import * as d3 from "d3";
 import BarChart from '../charts/bar-chart';
 
+const SIZE = {
+  top: 20,
+  bottom: 110,
+  left: { sm: 0, lg: 50 }
+};
+
 export default [
   '$window',
   '$timeout',
@@ -12,9 +18,9 @@ export default [
       // setting a 100ms timeout gives that xtra time to capture the final DOM
       angular.element(document).ready(() => {
         let chart = new BarChart(d3, element, scope.data, attrs.id);
-        chart.render();
+        chart.size(SIZE).render();
 
-        angular.element($window).bind('resize', () => chart.clean().size().render());
+        angular.element($window).bind('resize', () => chart.clean(SIZE).size().render());
       }, 100);
     }
 

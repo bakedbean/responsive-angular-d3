@@ -14,14 +14,12 @@ export default [
   '$timeout',
   function BarChartDirective($window, $timeout){
     var linker = function(scope, element, attrs){
-      // the DOM needs time to load, so that we can access the computed width of the container elements.
-      // setting a 100ms timeout gives that xtra time to capture the final DOM
       angular.element(document).ready(() => {
         let chart = new BarChart(d3, element, scope.data, attrs.id);
         chart.size(SIZE).render();
 
         angular.element($window).bind('resize', () => chart.clean(SIZE).size().render());
-      }, 100);
+      });
     }
 
     return {
@@ -29,8 +27,7 @@ export default [
       replace: true,
       link: linker,
       scope: { 
-        data: '=',
-        chartId: '='
+        data: '='
       }
     }
   }
